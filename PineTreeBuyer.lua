@@ -99,25 +99,6 @@ local YouNeed = Buyer:CreateButton({
     end,
 })
 
-local Input = Buyer:CreateInput({
-    Name = "Amount of Pine Trees",
-    CurrentValue = "",
-    PlaceholderText = "Enter amount...",
-    RemoveTextAfterFocusLost = false,
-    Flag = "Input1",
-    Callback = function(Text)
-        local amount = tonumber(Text)
-        if amount and amount > 0 then
-            inputAmount = amount -- сохраняем в переменную
-            local totalPrice = amount * 80
-            YouNeed:Set("You need: " .. totalPrice .. " gold")
-        else
-            inputAmount = 1
-            YouNeed:Set("You need: 0 gold")
-        end
-    end,
-})
-
 local Button4 = Buyer:CreateButton({
     Name = "Buy pine tree (CUSTOM)",
     Callback = function()
