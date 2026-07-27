@@ -43,13 +43,63 @@ local Buyer = Window:CreateTab("Main", 4483362458) -- Title, Image
 local Section = Buyer:CreateSection("Buy")
 local inputAmount = 1
 
+local Button = Buyer:CreateButton({
+    Name = "Buy pine tree x1 (80 gold)",
+    Callback = function()
+        local success, result = pcall(function()
+            return workspace.ItemBoughtFromShop:InvokeServer("PineTree", 1)
+        end)
+        
+        if success and result then
+            Rayfield:Notify({
+                Title = "Successfully",
+                Content = "Successfully bought x1 Pine Tree",
+                Duration = 3.5,
+                Image = 4483362458,
+            })
+        else
+            Rayfield:Notify({
+                Title = "Failed",
+                Content = "Failed, try again",
+                Duration = 3.5,
+                Image = 4483362458,
+            })
+        end
+    end
+})
+
+local Button2 = Buyer:CreateButton({
+    Name = "Buy pine tree x5 (400 gold)",
+    Callback = function()
+        local success, result = pcall(function()
+            return workspace.ItemBoughtFromShop:InvokeServer("PineTree", 5)
+        end)
+        
+        if success and result then
+            Rayfield:Notify({
+                Title = "Successfully",
+                Content = "Successfully bought x5 Pine Tree",
+                Duration = 3.5,
+                Image = 4483362458,
+            })
+        else
+            Rayfield:Notify({
+                Title = "Failed",
+                Content = "Failed, try again",
+                Duration = 3.5,
+                Image = 4483362458,
+            })
+        end
+    end
+})
+
 local YouNeed = Buyer:CreateButton({
     Name = "You need: 0 gold",
     Callback = function()
     end,
 })
 
-local Input = Tab:CreateInput({
+local Input = Buyer:CreateInput({
     Name = "Amount of Pine Trees",
     CurrentValue = "",
     PlaceholderText = "Enter amount...",
