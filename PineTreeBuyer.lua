@@ -121,7 +121,6 @@ local Input = Buyer:CreateInput({
 local Button4 = Buyer:CreateButton({
     Name = "Buy pine tree (CUSTOM)",
     Callback = function()
-        -- Берем число напрямую из переменной, никаких Rayfield.Flags
         local amount = inputAmount
         
         if amount and amount > 0 then
@@ -154,23 +153,6 @@ local Button4 = Buyer:CreateButton({
                 Duration = 3.5,
                 Image = 4483362458,
             })
-        end
-    end,
-})
-
-local Input = Buyer:CreateInput({
-    Name = "Amount of Pine Trees",
-    CurrentValue = "",
-    PlaceholderText = "Enter amount...",
-    RemoveTextAfterFocusLost = false,
-    Flag = "Input1",
-    Callback = function(Text)
-        local amount = tonumber(Text)
-        if amount and amount > 0 then
-            local totalPrice = amount * 80
-            YouNeed:Set("You need: " .. totalPrice .. " gold")
-        else
-            YouNeed:Set("You need: 0 gold")
         end
     end,
 })
