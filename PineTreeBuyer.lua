@@ -93,13 +93,6 @@ local Button2 = Buyer:CreateButton({
     end
 })
 
-local Button3 = Buyer:CreateButton({
-   Name = "poshel nahui",
-   Callback = function()
-   Rayfield:Destroy()
-   end,
-})
-
 local Button4 = Buyer:CreateButton({
     Name = "Buy pine tree (CUSTOM)",
     Callback = function()
@@ -161,4 +154,11 @@ local Input = Buyer:CreateInput({
             YouNeed:Set("You need: 0 gold")
         end
     end,
+})
+
+local Button3 = Buyer:CreateButton({
+   Name = "Close UI",
+   Callback = function()
+   Rayfield:Destroy()
+   end,
 })
