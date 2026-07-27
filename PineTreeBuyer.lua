@@ -71,7 +71,7 @@ local Input = Tab:CreateInput({
 local Button4 = Buyer:CreateButton({
     Name = "Buy pine tree (CUSTOM)",
     Callback = function()
-        -- Берем готовое число из переменной, никакой зависимости от Rayfield.Flags
+        -- Берем число напрямую из переменной, никаких Rayfield.Flags
         local amount = inputAmount
         
         if amount and amount > 0 then
