@@ -43,61 +43,36 @@ local Buyer = Window:CreateTab("Main", 4483362458) -- Title, Image
 local Section = Buyer:CreateSection("Buy")
 local inputAmount = 1
 
-local Button = Buyer:CreateButton({
-    Name = "Buy pine tree x1 (80 gold)",
+local YouNeed = Buyer:CreateButton({
+    Name = "You need: 0 gold",
     Callback = function()
-        local success, result = pcall(function()
-            return workspace.ItemBoughtFromShop:InvokeServer("PineTree", 1)
-        end)
-        
-        if success and result then
-            Rayfield:Notify({
-                Title = "Successfully",
-                Content = "Successfully bought x1 Pine Tree",
-                Duration = 3.5,
-                Image = 4483362458,
-            })
-        else
-            Rayfield:Notify({
-                Title = "Failed",
-                Content = "Failed, try again",
-                Duration = 3.5,
-                Image = 4483362458,
-            })
-        end
-    end
+    end,
 })
 
-local Button2 = Buyer:CreateButton({
-    Name = "Buy pine tree x5 (400 gold)",
-    Callback = function()
-        local success, result = pcall(function()
-            return workspace.ItemBoughtFromShop:InvokeServer("PineTree", 5)
-        end)
-        
-        if success and result then
-            Rayfield:Notify({
-                Title = "Successfully",
-                Content = "Successfully bought x5 Pine Tree",
-                Duration = 3.5,
-                Image = 4483362458,
-            })
+local Input = Tab:CreateInput({
+    Name = "Amount of Pine Trees",
+    CurrentValue = "",
+    PlaceholderText = "Enter amount...",
+    RemoveTextAfterFocusLost = false,
+    Flag = "Input1",
+    Callback = function(Text)
+        local amount = tonumber(Text)
+        if amount and amount > 0 then
+            inputAmount = amount -- сохраняем в переменную
+            local totalPrice = amount * 80
+            YouNeed:Set("You need: " .. totalPrice .. " gold")
         else
-            Rayfield:Notify({
-                Title = "Failed",
-                Content = "Failed, try again",
-                Duration = 3.5,
-                Image = 4483362458,
-            })
+            inputAmount = 1
+            YouNeed:Set("You need: 0 gold")
         end
-    end
+    end,
 })
 
 local Button4 = Buyer:CreateButton({
     Name = "Buy pine tree (CUSTOM)",
     Callback = function()
-        local rawText = Rayfield.Flags.Input1.CurrentValue
-        local amount = tonumber(rawText)
+        -- Берем готовое число из переменной, никакой зависимости от Rayfield.Flags
+        local amount = inputAmount
         
         if amount and amount > 0 then
             local pricePerItem = 80
@@ -130,12 +105,6 @@ local Button4 = Buyer:CreateButton({
                 Image = 4483362458,
             })
         end
-    end,
-})
-
-local YouNeed = Buyer:CreateButton({
-    Name = "You need: 0 gold",
-    Callback = function()
     end,
 })
 
