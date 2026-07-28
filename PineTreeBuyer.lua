@@ -41,7 +41,7 @@ local Window = Rayfield:CreateWindow({
 
 local Buyer = Window:CreateTab("Main", 4483362458) -- Title, Image
 local Tab2 = Window:CreateTab("Blocks", 4483362458)
-local Section = Tab2 = Window:CreateSection("Blocks")
+local Section = Tab2:CreateSection("Blocks")
 local Section = Buyer:CreateSection("Buy")
 local inputAmount = 1
 
@@ -180,7 +180,7 @@ local Button3 = Buyer:CreateButton({
    end,
 })
 
-local Button5 = Buyer:CreateButton({
+local Button3 = Tab2:CreateButton({
    Name = "Get Portals (experimental)",
    Callback = function()
    local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
