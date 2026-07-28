@@ -40,6 +40,8 @@ local Window = Rayfield:CreateWindow({
 })
 
 local Buyer = Window:CreateTab("Main", 4483362458) -- Title, Image
+local Tab2 = Window:CreateTab("Blocks", 4483362458)
+local Section = Tab2 = Window:CreateSection("Blocks")
 local Section = Buyer:CreateSection("Buy")
 local inputAmount = 1
 
@@ -164,7 +166,7 @@ local Button4 = Buyer:CreateButton({
    end,
 })
 
-local Button5 = Buyer:CreateButton({
+local Button4 = Buyer:CreateButton({
    Name = "Buy 4 cookie wheels (500 Robux)",
    Callback = function()
         workspace.PromptRobuxEvent:InvokeServer(1126385328, "Product")
@@ -175,5 +177,32 @@ local Button3 = Buyer:CreateButton({
    Name = "Close UI",
    Callback = function()
    Rayfield:Destroy()
+   end,
+})
+
+local Button3 = Buyer:CreateButton({
+   Name = "Get Portals (experimental)",
+   Callback = function()
+   local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+    rootPart.CFrame = CFrame.new(Vector3.new(435.1577715, -31.6001434, 3294.4729), rootPart.CFrame.LookVector)
+    task.wait(5)
+
+    rootPart.CFrame = CFrame.new(Vector3.new(1467.17859, -59.6000099, 3451.98779), rootPart.CFrame.LookVector)
+    task.wait(5)
+
+    rootPart.CFrame = CFrame.new(Vector3.new(1113.42468, -47.07999904, 3262.52393), rootPart.CFrame.LookVector)
+    task.wait(5)
+
+    rootPart.CFrame = CFrame.new(Vector3.new(1362.12402, -59.6000175, 3456.08716), rootPart.CFrame.LookVector)
+    task.wait(5)
+
+    rootPart.CFrame = CFrame.new(Vector3.new(1131.46521, -47.4000359, 3283.68921), rootPart.CFrame.LookVector)
+    task.wait(5)
+
+    rootPart.CFrame = CFrame.new(Vector3.new(1564.07092, -59.6000099, 3452.69385), rootPart.CFrame.LookVector)
+    task.wait(5)
+
+    rootPart.CFrame = CFrame.new(Vector3.new(1117.81592, -47.4000359, 3302.05908), rootPart.CFrame.LookVector)
    end,
 })
