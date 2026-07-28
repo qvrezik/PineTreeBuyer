@@ -180,7 +180,7 @@ local Button3 = Buyer:CreateButton({
    end,
 })
 
-local Button3 = Buyer:CreateButton({
+local Button5 = Buyer:CreateButton({
    Name = "Get Portals (experimental)",
    Callback = function()
    local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
