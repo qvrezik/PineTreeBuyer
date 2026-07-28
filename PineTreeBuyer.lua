@@ -157,6 +157,20 @@ local Button4 = Buyer:CreateButton({
     end,
 })
 
+local Button4 = Buyer:CreateButton({
+   Name = "Buy 5 dragon harpoons (500 Robux)",
+   Callback = function()
+        workspace.PromptRobuxEvent:InvokeServer(1109792341, "Product")
+   end,
+})
+
+local Button5 = Buyer:CreateButton({
+   Name = "Buy 4 cookie wheels (500 Robux)",
+   Callback = function()
+        workspace.PromptRobuxEvent:InvokeServer(1126385328, "Product")
+   end,
+})
+
 local Button3 = Buyer:CreateButton({
    Name = "Close UI",
    Callback = function()
