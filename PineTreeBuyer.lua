@@ -41,7 +41,9 @@ local Window = Rayfield:CreateWindow({
 
 local Buyer = Window:CreateTab("Main", 4483362458) -- Title, Image
 local Tab2 = Window:CreateTab("Blocks", 4483362458)
-local Section = Tab2:CreateSection("Blocks")
+local Tab3 = Window:CreateTab("Dupe", 4483362458)
+local Section3 = Tab2:CreateSection("Dupe")
+local Section2 = Tab2:CreateSection("Blocks")
 local Section = Buyer:CreateSection("Buy")
 local inputAmount = 1
 
@@ -167,7 +169,7 @@ local Button4 = Buyer:CreateButton({
 })
 
 local Button4 = Buyer:CreateButton({
-   Name = "Buy 4 cookie wheels (500 Robux)",
+   Name = "Buy 4 cookie wheels (250 Robux)",
    Callback = function()
         workspace.PromptRobuxEvent:InvokeServer(1126385328, "Product")
    end,
@@ -180,29 +182,63 @@ local Button3 = Buyer:CreateButton({
    end,
 })
 
-local Button3 = Tab2:CreateButton({
-   Name = "Get Portals (experimental)",
+local savedCFrame = nil
+local currentSlot = "1" -- Храним значение слота тут
+
+local SetPoint = Tab3:CreateButton({
+   Name = "Set Point",
    Callback = function()
-   local rootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+       local char = game.Players.LocalPlayer.Character
+       if char and char:FindFirstChild("HumanoidRootPart") then
+           savedCFrame = char.HumanoidRootPart.CFrame
+       end
+   end,
+})
 
-    rootPart.CFrame = CFrame.new(Vector3.new(435.1577715, -31.6001434, 3294.4729), rootPart.CFrame.LookVector)
-    task.wait(5)
+local Input = Tab3:CreateInput({
+   Name = "Slot",
+   CurrentValue = "1",
+   PlaceholderText = "Slot",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+       currentSlot = tostring(Text)
+   end,
+})
 
-    rootPart.CFrame = CFrame.new(Vector3.new(1467.17859, -59.6000099, 3451.98779), rootPart.CFrame.LookVector)
-    task.wait(5)
+local SaveButton = Tab3:CreateButton({
+   Name = "Dupe Build",
+   Callback = function()
 
-    rootPart.CFrame = CFrame.new(Vector3.new(1113.42468, -47.07999904, 3262.52393), rootPart.CFrame.LookVector)
-    task.wait(5)
+       task.spawn(function()
+           local player = game.Players.LocalPlayer
+           local char = player.Character or player.CharacterAdded:Wait()
+           local hrp = char:FindFirstChild("HumanoidRootPart")
+           
+           if not hrp then return end
+           
+           if not savedCFrame then
+               savedCFrame = hrp.CFrame
+           end
 
-    rootPart.CFrame = CFrame.new(Vector3.new(1362.12402, -59.6000175, 3456.08716), rootPart.CFrame.LookVector)
-    task.wait(5)
-
-    rootPart.CFrame = CFrame.new(Vector3.new(1131.46521, -47.4000359, 3283.68921), rootPart.CFrame.LookVector)
-    task.wait(5)
-
-    rootPart.CFrame = CFrame.new(Vector3.new(1564.07092, -59.6000099, 3452.69385), rootPart.CFrame.LookVector)
-    task.wait(5)
-
-    rootPart.CFrame = CFrame.new(Vector3.new(1117.81592, -47.4000359, 3302.05908), rootPart.CFrame.LookVector)
+           hrp.CFrame = CFrame.new(128.8933258, -7.1000228, 1215.9909668)
+           
+           task.wait(1)
+           
+           local slotToLoad = currentSlot
+           if Rayfield and Rayfield.Flags and Rayfield.Flags["Input1"] then
+               slotToLoad = tostring(Rayfield.Flags["Input1"].Value)
+           end
+           
+           local slotNum = tonumber(slotToLoad:match("^%s*(.-)%s*$")) or 1
+           
+           workspace.LoadBoatData:FireServer(slotNum, 0)
+           
+           task.wait(15)
+           
+           if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+               player.Character.HumanoidRootPart.CFrame = savedCFrame
+           end
+       end)
    end,
 })
