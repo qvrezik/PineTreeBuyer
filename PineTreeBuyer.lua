@@ -1,11 +1,11 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Pine Tree Buyer -- Made by t.me/qvrezikk",
+   Name = "Project AeroX -- Made by t.me/qvrezikk",
    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
-   LoadingTitle = "Pine Tree Buyer",
+   LoadingTitle = "Project AeroX",
    LoadingSubtitle = "by t.me/qvrezikk",
-   ShowText = "idk", -- for mobile users to unhide Rayfield, change if you'd like
+   ShowText = "AeroX", -- for mobile users to unhide Rayfield, change if you'd like
    Theme = "Amethyst", -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
    ToggleUIKeybind = "K", -- The keybind to toggle the UI visibility (string like "K" or Enum.KeyCode)
@@ -18,7 +18,7 @@ local Window = Rayfield:CreateWindow({
    ConfigurationSaving = {
       Enabled = false,
       FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "Big Hub"
+      FileName = "AeroX"
    },
 
    Discord = {
@@ -27,7 +27,7 @@ local Window = Rayfield:CreateWindow({
       RememberJoins = true -- Set this to false to make them join the Discord every time they load it up
    },
 
-   KeySystem = true, -- Set this to true to use our key system
+   KeySystem = false, -- Set this to true to use our key system
    KeySettings = {
       Title = "hello",
       Subtitle = "Key System",
